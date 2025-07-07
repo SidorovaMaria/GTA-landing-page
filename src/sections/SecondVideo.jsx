@@ -1,9 +1,10 @@
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React from "react";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 
 const SecondVideo = () => {
-	const videoRef = React.useRef(null);
+	const videoRef = useRef();
+
 	useGSAP(() => {
 		gsap.set(".lucia", { marginTop: "-60vh", opacity: 0 });
 
@@ -17,7 +18,7 @@ const SecondVideo = () => {
 			},
 		});
 
-		tl.to(".lucia", { opacity: 1, duration: 2, ease: "power1.inOut" });
+		tl.to(".lucia", { opacity: 1, duration: 1, ease: "power1.inOut" });
 
 		videoRef.current.onloadedmetadata = () => {
 			tl.to(
@@ -27,6 +28,7 @@ const SecondVideo = () => {
 			);
 		};
 	});
+
 	return (
 		<section className="lucia">
 			<div className="h-dvh">
